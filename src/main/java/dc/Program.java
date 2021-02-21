@@ -1,5 +1,7 @@
 package dc;
 
+import com.google.gson.Gson;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -116,5 +118,6 @@ public class Program {
         // wyświetlenie listy uczniów posortowanych wg średniej ocen
         System.out.println("=== LIST OF PUPILS SORTED BY AVERAGE NOTES");
         klasa.showPupils();
+        klasa.saveToFile("klasa.json");
     }
 }

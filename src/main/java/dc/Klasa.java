@@ -1,5 +1,10 @@
 package dc;
 
+import com.google.gson.Gson;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /*
@@ -110,5 +115,20 @@ public class Klasa {
     }
     public void sortPupils(Comparator comparator) {
         Collections.sort(pupilList, comparator);
+    }
+    public void saveToFile(String plik) {
+        File file = new File(plik);
+        Gson json = new Gson();
+        Object src;
+        String napis = json.toJson(this);
+        System.out.println(napis);
+        try {
+            FileWriter wr = new FileWriter(file);
+            wr.write(napis);
+            wr.close();
+        }
+        catch(IOException ie) {
+            System.out.println(ie.getMessage());
+        }
     }
 }
