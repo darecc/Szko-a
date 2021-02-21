@@ -29,5 +29,14 @@ public class Pupil extends  Person{
     public void addNote(Note note) {
         noteList.add(note);
     }
-
+    public double countAverageNote() {
+        double suma = 0;
+        double count = 0;
+        for(Note note : noteList) {
+            suma += note.getNote();
+            count++;
+        }
+        double averageNote = suma / count;
+        return averageNote;
+    }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
-        Klasa klasa = new Klasa("klasa mat-fiz");
+        Klasa klasa = Klasa.getInstance("klasa mat-fiz");
         //region wklepywanie danych (region tworzymy poprzez Ctrl+Alt+T
         Pupil p1 = new Pupil("Jan", "Nowak", LocalDate.of(2005, 5, 21));
         Pupil p2 = new Pupil("Anna", "Mucha", LocalDate.of(2003, 6, 11));
@@ -87,5 +87,24 @@ public class Program {
         p5.addNote(new Note("język polski", 3.5));
         p5.addNote(new Note("język angielski", 4.0));
         //endregion)
+        System.out.println("=== AVERAGE NOTE FOR P5 ===");
+        System.out.println(p5.countAverageNote());
+        System.out.println(klasa.calculateAverageNote(p5));
+        System.out.println("=== AVERAGE NOTE FOR fizyka ===");
+        try {
+            System.out.println(klasa.calculateAverageNote("fizyka"));
+        }
+        catch(ClassException ce) {
+            System.out.println(ce.getMessage());
+        }
+        System.out.println("=== AVERAGE NOTE FOR ALL SUBJECTS AND PUPILS ===");
+        try {
+            System.out.println(klasa.calculateAverageNote());
+        }
+        catch(ClassException ce) {
+            System.out.println(ce.getMessage());
+        }
+        // przedmioty bez oceny dla ucznia p5
+        klasa.showAbsentNotes(p5);
     }
 }

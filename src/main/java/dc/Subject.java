@@ -12,6 +12,7 @@ public class Subject {
     }
 
     private Teacher teacher;
+
     public Subject(String name) {
         this.name = name;
     }
