@@ -1,0 +1,81 @@
+W systemie występuje klasa szkolna (Klasa), do której uczęszczają uczniowie (Pupil).
+Klasa ma listę przedmiotów (Subject), których uczniowie mają się uczyć.
+Każdy przedmiot ma przypisanego nauczyciela (Teacher).
+Uczniowie otrzymują oceny (Note) z przedmiotów, których uczą się
+
+Zagadnienia:
+Klasa
+Klasa abstrakcyjna
+Dziedziczenie
+Polimorfizm
+Kolekcje (np. ArrayList, HashSet)
+Strumienie i wyrażenia lambda
+Comparator
+Zapis/odczyt danych do/z pliku (najlepiej serializacja)
+Własne wyjątki (wyjątki dla danej klasy)
+Iterator
+Wzorce projektowe: singleton + dekorator
+Kompozycja (z użyciem interfejsów)
+
+Części zadania do wykonania:
+1. Utworzyć abstrakcyjną klasę Person (osoba) z polami:
+    -firstName (imię),
+    - lastName (nazwisko),
+    - getterami do pól
+    - metoda toString() : imię + nazwisko
+2. Utworzyć klasę Teacher (nauczyciel) dziedziczącą po klasie Person i posiadającą dodatkowe pole:
+ - subjects (typu HashSet<String> - z nazwami przedmiotów, które dany nauczyciel potrafi prowadzić). Typ HashSet pozwoli tolerować sytuację, gdy nauczyciel zadeklaruje kilka razy ten sam przedmiot (że potrafi go poprowadzić -> skleroza ;)
+3. Utworzyć klasę Subject z polami:
+    - name (String)
+    - teacher (typu Teacher)
+    - konstruktor z parametrem name
+    - konstruktor z parametrami (name, teacher)
+    - metoda setTeacher(Teacher teacher)
+    - getter getName()
+4. Utworzyć klasę Note (ocena) z polami:
+    - subjectName (String),
+    - note (double)
+5. Utworzyć klasę Pupil (uczeń) dziedziczącą po klasie Person z polami:
+    - firstName (imię),
+    - lastName (nazwisko),
+    - birthDate (data urodzenia)
+    - noteList (listą ocen ucznia) : (List<Note>)
+    - gettery dla wszystkich pól
+6. Utworzyć w programie kilku uczniów i kilku nauczycieli
+7. Utworzyć klasę Klasa (jako singleton) posiadającą pola:
+    - className (nazwa klasy) : String
+    - pupilsList (lista uczniów) : List<Pupil>
+    - teachersList (lista nauczycieli) : List<Teacher>
+    - subjectList (lista przedmiotów) : List<String>
+8. W klasie Klasa napisać metody:
+    - addSubject (String subjectName) - dodającą przedmiot dla klasy
+    - addPupil(Pupil pupil) - dodającą ucznia do klasy
+    - addTeacher(Teacher teacher) - dodająca nauczyciela dla klasy
+    - addTeacherToSubjects() przypisującą nauczycieli do przedmiotów (losowy nauczyciel do przedmiotu (ale wybrany nauczyciel musi posiadać ten przemiot na swojej liście prowadzonych przedmiotów)
+    - addNote(Pupil pupil, String subjectName, double note) - dodającą ocenę uczniowi z danego przedmiotu
+    - showSubjects() - wyświetlającą przedmioty z nauczycielami
+    - showPupils() - wyświetlająca wszystkich uczniów
+9. Dla klasy Klasa należy napisać wyjątek ClassException (brak nauczyciela z danego przedmiotu, nieistniejący przedmiot)
+9. Dodać kilka przedmiotów do klasy
+A. Dodać nauczycieli do przedmiotów (metodą addTeacherToSubjects)
+B. Dodać kilka ocen uczniom (metoda addNote)
+    - calculateAverageNote(Pupil pupil) - obliczającą średnią ocenę dla wskazanego ucznia (najlepiej odwołująca się do metody countAverageNote z klasy Pupil)
+    - calculateAverageNote(String subjectName) - obliczającą średnią ocenę z danego przedmiotu
+    - calculateAverageNote() - obliczającą średnią ocenę dla wszystkich uczniów ze wszystkich przedmiotów
+    - showAbsentNotes(Pupil pupil) – wyświetlenie przedmiotów, z których dany uczeń nie ma oceny
+    - pokazanie przy pomocy strumieni 3 najlepszych uczniów z fizyki i matematyki
+    - pokazanie przy pomocy strumieni najniższą ocenę z geografii
+    - pogrupowanie uczniów wg roku urodzenia
+    - pogrupowanie uczniów wg przedziału średniej oceny (np. 2.0-2.99, 3.00-3.99 itd.)
+D. W klasie Klasa utworzyć iterator przechodzący przez wszystkich uczniów
+E. Utworzyć Comparator, który pozwala sortować uczniów wg:
+    - nazwiska i imienia ucznia (PupilNameComparator)
+    - średniej ocen ucznia (PupilAverageNoteComparator)
+    - daty urodzenia ucznia (PupilDayOfBirthComparator)
+    - w klasie Klasa utworzyć odpowiednią metodę do sortowania wg określonego comparatora (np. sortPupils(Comparator comparator)
+F. Utworzyć w programie obiekt Klasa i dodać do niego uczniów i nauczycieli
+G. Napisać metodę saveClass zapisującą dane klasy do pliku (przy pomocy serializacji JSon)
+H. Napisać metodę loadClass odczytującą dane klasy z pliku (przy pomocy deserializacji JSon)
+I. Utworzyć interfejs IBonus z metodą: double up()
+J. Dodać do klasy Pupil pole premia typu IBonus
+K. Zmienić metodę addNote dla lasy Pupil tak, aby uwzględniała premię dla ucznia (np. za udział w olimpiadzie)
