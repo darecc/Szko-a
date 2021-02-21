@@ -13,6 +13,7 @@ public class Teacher extends Person {
     }
     public Teacher(String firstName, String lastName) {
         super(firstName, lastName);
+        subjects = new HashSet<String>();
     }
     public void addSubject(String subject) {
         subjects.add(subject);

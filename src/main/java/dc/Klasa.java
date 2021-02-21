@@ -1,8 +1,6 @@
 package dc;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /*
     - className (nazwa klasy) : String
@@ -20,6 +18,9 @@ public class Klasa {
 
     private Klasa(String className) {
         this.className = className;
+        pupilList = new ArrayList<Pupil>();
+        teachersList = new ArrayList<Teacher>();
+        subjectList = new ArrayList<Subject>();
     }
 
     public static Klasa getInstance(String className) {
@@ -101,5 +102,13 @@ public class Klasa {
         System.out.println("=== SUBJECTS WITHOUT NOTES ===");
         for(String s : przedmioty)
             System.out.println(s);
+        System.out.println("=== END OF SUBJECTS WITHOUT NOTES ===");
+    }
+    public void showPupils() {
+        for(Pupil pup : pupilList)
+            System.out.println(pup.toString());
+    }
+    public void sortPupils(Comparator comparator) {
+        Collections.sort(pupilList, comparator);
     }
 }

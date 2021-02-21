@@ -106,5 +106,15 @@ public class Program {
         }
         // przedmioty bez oceny dla ucznia p5
         klasa.showAbsentNotes(p5);
+        // posortowanie uczniów wg nazwisk i imion
+        klasa.sortPupils(new PupilNameComparator());
+        // wyświetlenie listy uczniów posortowanych wg nazwisk i imion
+        System.out.println("=== LIST OF PUPILS SORTED BY NAMES");
+        klasa.showPupils();
+        // posortowanie uczniów wg średniej ocen
+        klasa.sortPupils(new PupilAverageNoteComparator());
+        // wyświetlenie listy uczniów posortowanych wg średniej ocen
+        System.out.println("=== LIST OF PUPILS SORTED BY AVERAGE NOTES");
+        klasa.showPupils();
     }
 }

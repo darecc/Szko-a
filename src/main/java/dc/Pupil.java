@@ -1,7 +1,8 @@
 package dc;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
     - firstName (imię),
@@ -25,6 +26,7 @@ public class Pupil extends  Person{
     public Pupil(String firstName, String lastName, LocalDate birthDate) {
         super(firstName, lastName);
         this.birthDate = birthDate;
+        noteList = new ArrayList<Note>();
     }
     public void addNote(Note note) {
         noteList.add(note);
@@ -38,5 +40,9 @@ public class Pupil extends  Person{
         }
         double averageNote = suma / count;
         return averageNote;
+    }
+    @Override
+    public String toString() {
+        return getFirstName() + " " + getLastName() + " aver. note= " + countAverageNote();
     }
 }
